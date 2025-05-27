@@ -33,22 +33,28 @@ pipeline {
                 }
             }
         } */
-        /*stage('SonarQube Analysis') {
+        stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('MySonarQube') {
                     // sh '$SONAR_SCANNER_HOME/bin/sonar-scanner' 
-                    sh 'sonar-scanner'
+                    // sh 'sonar-scanner'
+                    sh """
+                      sonar-scanner \
+                      -Dsonar.projectKey=my-project \
+                      -Dsonar.sources=. \
+                      -Dsonar.login=$SONAR_AUTH_TOKEN
+                    """
 
                 }
             }
-        }*/
-        stage('SonarQube Scan') {
+        }
+        /*stage('SonarQube Scan') {
             steps {
                 withCredentials([string(credentialsId: 'sonar-credentials', variable: 'SONAR_TOKEN')]) {
                 sh 'sonar-scanner -Dsonar.login=$SONAR_TOKEN'
                 }
             }
-        }
+        }*/
     }
     /* post {
         success {
