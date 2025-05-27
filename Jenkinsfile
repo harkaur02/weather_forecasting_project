@@ -1,8 +1,8 @@
 pipeline {
     agent any
-    tools {
+    /*tools {
         sonarQubeScanner 'SonarScanner CLI'  // Name must match what you added in Jenkins
-    }
+    }*/
     environment {
         IMAGE_NAME = "thethymca/weather_forecasting_project:${BUILD_NUMBER}"
         DOCKER_REGISTRY = "https://index.docker.io/v1"
