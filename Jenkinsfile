@@ -13,7 +13,8 @@ pipeline {
     stages {
         stage ('git checkout code'){
             steps {
-                git branch: 'main', url: 'https://github.com/harkaur02/weather_forecasting_project.git'
+                //git branch: 'main', url: 'https://github.com/harkaur02/weather_forecasting_project.git'
+                sh 'git clone https://github.com/your/repo.git'
             }
         }
         /* stage('Docker build') {
