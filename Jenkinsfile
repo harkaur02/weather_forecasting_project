@@ -18,7 +18,8 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/harkaur02/weather_forecasting_project.git'
             }
         }
-        /*stage('SonarQube Analysis') {
+        /* //following code is correct too
+        stage('SonarQube Analysis') {
           steps {
             sh 'echo $PATH'
             withSonarQubeEnv('SonarQube') { /*'SonarQube' from Manage-jenkins -> system -> SonarQube servers -> SonarQube installations -> Name*/
