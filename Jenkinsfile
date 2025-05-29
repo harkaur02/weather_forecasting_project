@@ -21,7 +21,7 @@ pipeline {
         stage('SonarQube Analysis') {
           steps {
             sh 'echo $PATH'
-            withSonarQubeEnv('SonarQube') {
+            withSonarQubeEnv('SonarQube') { /*'SonarQube' from Manage-jenkins -> system -> SonarQube servers -> SonarQube installations -> Name*/
               sh '''
                 sonar-scanner \
                   -Dsonar.projectKey=weather-forecast \
