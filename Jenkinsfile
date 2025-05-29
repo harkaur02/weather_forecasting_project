@@ -24,7 +24,7 @@ pipeline {
                 sonar-scanner \
                   -Dsonar.projectKey=weather-forecast \
                   -Dsonar.sources=. \
-                  -Dsonar.host.url=http://15.223.220.252:9000/:9000 \
+                  -Dsonar.host.url=http://15.223.220.252:9000/ \
                   -Dsonar.login=$SONAR_TOKEN
               '''
             }
