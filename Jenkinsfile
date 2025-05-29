@@ -50,8 +50,8 @@ pipeline {
             steps {
                 build job: 'weather-forecast-CD', wait: false
             }
-        }
-    }*/
+        }*/
+    }
     /* post {
         success {
             slackSend(channel: "${SLACK_CHANNEL}", message: "✅ *Pipeline Successful*: `${JOB_NAME}` build #${BUILD_NUMBER} (<${BUILD_URL}|View Build>)")
