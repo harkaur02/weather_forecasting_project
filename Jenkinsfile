@@ -8,6 +8,7 @@ pipeline {
         DOCKER_REGISTRY = "https://index.docker.io/v1"
         //SLACK_CHANNEL = '#jenkins-new'
         //SONAR_SCANNER_HOME = tool name: 'SonarScanner CLI', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
+        PATH = "/opt/sonar-scanner/bin:${env.PATH}"
         SONAR_TOKEN = credentials('sonar-credentials') // Added this in Jenkins → Credentials
 
     }
