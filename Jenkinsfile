@@ -18,7 +18,7 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/harkaur02/weather_forecasting_project.git'
             }
         }
-        stage('SonarQube Analysis') {
+        /*stage('SonarQube Analysis') {
           steps {
             sh 'echo $PATH'
             withSonarQubeEnv('SonarQube') { /*'SonarQube' from Manage-jenkins -> system -> SonarQube servers -> SonarQube installations -> Name*/
@@ -31,7 +31,7 @@ pipeline {
               '''
             }
           }
-        }
+        }*/
         /*stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('SonarScanner CLI') {
@@ -39,13 +39,13 @@ pipeline {
                 }
             }
         }*/
-        /*stage('SonarQube Scan') {
+        stage('SonarQube Scan') {
             steps {
                 withCredentials([string(credentialsId: 'sonar-credentials', variable: 'SONAR_TOKEN')]) {
                 sh 'sonar-scanner -Dsonar.login=$SONAR_TOKEN'
                 }
             }
-        }*/
+        }
         /*stage('Docker build') {
             steps {
                 sh "docker build -t ${IMAGE_NAME} ."
