@@ -20,6 +20,7 @@ pipeline {
         }
         stage('SonarQube Analysis') {
           steps {
+            sh 'echo $PATH'
             withSonarQubeEnv('SonarQube') {
               sh '''
                 sonar-scanner \
