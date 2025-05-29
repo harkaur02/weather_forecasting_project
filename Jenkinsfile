@@ -7,7 +7,7 @@ pipeline {
         IMAGE_NAME = "thethymca/weather_forecasting_project:${BUILD_NUMBER}"
         DOCKER_REGISTRY = "https://index.docker.io/v1"
         //SLACK_CHANNEL = '#jenkins-new'
-        SONAR_SCANNER_HOME = tool name: 'SonarScanner CLI', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
+        //SONAR_SCANNER_HOME = tool name: 'SonarScanner CLI', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
     }
     stages {
         stage ('git checkout code'){
@@ -15,20 +15,20 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/harkaur02/weather_forecasting_project.git'
             }
         }
-        stage('SonarQube Analysis') {
+        /*stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('SonarQube') {
                     sh '$SONAR_SCANNER_HOME/bin/sonar-scanner'
                 }
             }
-        }
-        /* stage('SonarQube Scan') {
+        }*/
+        stage('SonarQube Scan') {
             steps {
                 withCredentials([string(credentialsId: 'sonar-credentials', variable: 'SONAR_TOKEN')]) {
                 sh 'sonar-scanner -Dsonar.login=$SONAR_TOKEN'
                 }
             }
-        } */
+        }
         /*stage('Docker build') {
             steps {
                 sh "docker build -t ${IMAGE_NAME} ."
