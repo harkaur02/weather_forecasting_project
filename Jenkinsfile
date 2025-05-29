@@ -46,6 +46,11 @@ pipeline {
                 }
             }
         } */
+        stage('Trigger Next Pipeline for CD part') {
+            steps {
+                build job: 'weather-forecast-CD', wait: false
+            }
+        }
     }
     /* post {
         success {
