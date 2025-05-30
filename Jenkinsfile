@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {
-        sonarQubeScanner 'SonarScanner'  // Name must match what you added in Jenkins
+        sonarQubeScanner 'SonarScanner'  /* Name must match what you added in Jenkins */
     }
     environment {
         IMAGE_NAME = "thethymca/weather_forecasting_project:${BUILD_NUMBER}"
