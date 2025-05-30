@@ -1,8 +1,5 @@
 pipeline {
     agent any
-    /*tools {
-        sonarQubeScanner 'sonar-scanner'  // Name must match what you added in Jenkins 
-    }*/
     environment {
         IMAGE_NAME = "thethymca/weather_forecasting_project:${BUILD_NUMBER}"
         DOCKER_REGISTRY = "https://index.docker.io/v1"
@@ -51,6 +48,17 @@ pipeline {
             steps {
                 sh "docker build -t ${IMAGE_NAME} ."
                 echo "Image built successfully!"
+            }
+        }
+        stage('Install Trivy') {
+            steps {
+                sh 'curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin'
+            }
+        }
+        stage('Scan Image with Trivy') {
+            steps {
+                // sh 'trivy image ${IMAGE_NAME}'
+                sh 'trivy image --exit-code 1 --severity HIGH,CRITICAL ${IMAGE_NAME}'
             }
         }
         stage ('Docker image push') {
